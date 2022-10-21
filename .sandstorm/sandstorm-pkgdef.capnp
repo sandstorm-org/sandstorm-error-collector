@@ -19,15 +19,15 @@ const pkgdef :Spk.PackageDefinition = (
 
     appTitle = (defaultText = "Sandstorm Error Collector"),
 
-    appVersion = 0,  # Increment this for every release.
+    appVersion = 1,  # Increment this for every release.
 
-    appMarketingVersion = (defaultText = "0.0.0"),
+    appMarketingVersion = (defaultText = "1.0.0"),
     # Human-readable representation of appVersion. Should match the way you
     # identify versions of your app in documentation and marketing.
 
     actions = [
       # Define your "new document" handlers here.
-      ( nounPhrase = (defaultText = "instance"),
+      ( nounPhrase = (defaultText = "datastore"),
         command = .myCommand
         # The command to run when starting for the first time. (".myCommand"
         # is just a constant defined at the bottom of the file.)
@@ -47,36 +47,24 @@ const pkgdef :Spk.PackageDefinition = (
       # and (in deeper detail) in the sandstorm source code, in the Metadata section of
       # https://github.com/sandstorm-io/sandstorm/blob/master/src/sandstorm/package.capnp
       icons = (
-        # Various icons to represent the app in various contexts.
-        #appGrid = (svg = embed "path/to/appgrid-128x128.svg"),
-        #grain = (svg = embed "path/to/grain-24x24.svg"),
-        #market = (svg = embed "path/to/market-150x150.svg"),
-        #marketBig = (svg = embed "path/to/market-big-300x300.svg"),
+        appGrid = (svg = embed "fa-gears.svg"),
+        grain = (svg = embed "fa-gears.svg"),
+        market = (svg = embed "fa-gears.svg"),
+        marketBig = (svg = embed "fa-gears.svg"),
       ),
 
-      website = "http://example.com",
-      # This should be the app's main website url.
+      website = "https://github.com/sandstorm-io/sandstorm-error-collector",
 
-      codeUrl = "http://example.com",
-      # URL of the app's source code repository, e.g. a GitHub URL.
-      # Required if you specify a license requiring redistributing code, but optional otherwise.
+      codeUrl = "https://github.com/sandstorm-io/sandstorm-error-collector",
 
-      license = (none = void),
-      # The license this package is distributed under.  See
-      # https://docs.sandstorm.io/en/latest/developing/publishing-apps/#license
+      license = (openSource = mit),
 
-      categories = [],
-      # A list of categories/genres to which this app belongs, sorted with best fit first.
-      # See the list of categories at
-      # https://docs.sandstorm.io/en/latest/developing/publishing-apps/#categories
+      categories = [developerTools],
 
       author = (
         # Fields relating to the author of this app.
 
-        contactEmail = "youremail@example.com",
-        # Email address to contact for any issues with this app. This includes end-user support
-        # requests as well as app store administrator requests, so it is very important that this be a
-        # valid address with someone paying attention to it.
+        contactEmail = "inbox@jacobweisz.com",
 
         #pgpSignature = embed "path/to/pgp-signature",
         # PGP signature attesting responsibility for the app ID. This is a binary-format detached
@@ -91,12 +79,6 @@ const pkgdef :Spk.PackageDefinition = (
         #
         # Further details including how to set up GPG and how to use keybase.io can be found
         # at https://docs.sandstorm.io/en/latest/developing/publishing-apps/#verify-your-identity
-
-        upstreamAuthor = "Example App Team",
-        # Name of the original primary author of this app, if it is different from the person who
-        # produced the Sandstorm package. Setting this implies that the author connected to the PGP
-        # signature only "packaged" the app for Sandstorm, rather than developing the app.
-        # Remove this line if you consider yourself as the author of the app.
       ),
 
       #pgpKeyring = embed "path/to/pgp-keyring",
@@ -109,15 +91,9 @@ const pkgdef :Spk.PackageDefinition = (
       #
       # Where `<key-id>` is a PGP key ID or email address associated with the key.
 
-      #description = (defaultText = embed "path/to/description.md"),
-      # The app's description in Github-flavored Markdown format, to be displayed e.g.
-      # in an app store. Note that the Markdown is not permitted to contain HTML nor image tags (but
-      # you can include a list of screenshots separately).
+      description = (defaultText = embed "../README.md"),
 
-      shortDescription = (defaultText = "one-to-three words"),
-      # A very short (one-to-three words) description of what the app does. For example,
-      # "Document editor", or "Notetaking", or "Email client". This will be displayed under the app
-      # title in the grid view in the app market.
+      shortDescription = (defaultText = "Opt-in telemetry"),
 
       screenshots = [
         # Screenshots to use for marketing purposes.  Examples below.
@@ -153,15 +129,8 @@ const pkgdef :Spk.PackageDefinition = (
   ),
 
   fileList = "sandstorm-files.list",
-  # `spk dev` will write a list of all the files your app uses to this file.
-  # You should review it later, before shipping your app.
 
   alwaysInclude = [],
-  # Fill this list with more names of files or directories that should be
-  # included in your package, even if not listed in sandstorm-files.list.
-  # Use this to force-include stuff that you know you need but which may
-  # not have been detected as a dependency during `spk dev`. If you list
-  # a directory here, its entire contents will be included recursively.
 
   bridgeConfig = (
   #  # Used for integrating permissions and roles into the Sandstorm shell
