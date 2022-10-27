@@ -18,7 +18,7 @@ echo "</div>
 <script>
   function requestIframeURL() {
     var templateToken = \"\$API_TOKEN\";
-	var templateHost = \"https://\$API_HOST/v1.php\"
+	var templateHost = \"https://\$API_HOST\"
     window.parent.postMessage({renderTemplate: {
       rpcId: \"0\",
       template: templateToken,

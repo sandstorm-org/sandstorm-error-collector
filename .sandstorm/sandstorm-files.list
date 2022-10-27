@@ -74,6 +74,7 @@ lib64
 opt/app/.sandstorm/launcher.sh
 opt/app/.sandstorm/service-config/mime.types
 opt/app/.sandstorm/service-config/nginx.conf
+opt/app/api/index.php
 opt/app/api/v1.php
 opt/app/index.php
 proc/cpuinfo
