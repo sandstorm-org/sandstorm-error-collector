@@ -1,4 +1,9 @@
-<?php echo "<html><body><h1>Sandstorm Error Collector</h1><p>
+<?php if (strpos($_SERVER['HTTP_X_SANDSTORM_PERMISSIONS'], "view") === false)
+{
+	die("Unauthorized");
+} else {
+
+echo "<html><body><h1>Sandstorm Error Collector</h1><p>
 
 <div style=\"border:1px solid black; padding:20px;\"><h2>Last 10 errors reported:</h2>";
 
@@ -22,11 +27,15 @@ echo "</div>
     window.parent.postMessage({renderTemplate: {
       rpcId: \"0\",
       template: templateToken,
+      forSharing: true,
+      roleAssignment: {roleId: 1},
       clipboardButton: 'left',
     }}, \"*\");
 	window.parent.postMessage({renderTemplate: {
       rpcId: \"1\",
       template: templateHost,
+      forSharing: true,
+      roleAssignment: {roleId: 1},
       clipboardButton: 'left',
     }}, \"*\");
   }
@@ -62,3 +71,4 @@ echo "</div>
 <div style=\"text-align: left; width: 100%; height: 30px; margin: 0; border: 0;\"><pre id=\"text\">curl --silent --max-time 20 --data \"{\\\"error_code\\\":\\\"E_TEST\\\",\\\"user-agent\\\":\\\"TestAgent/0.0.1\\\"}\" -H \"Authorization: Bearer BEARER_TOKEN\" -X POST --output \"/dev/null\" -w '%{http_code}' API_ENDPOINT</pre></div></div>
 
 </body></html>";
+}
